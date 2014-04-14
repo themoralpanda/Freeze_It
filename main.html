@@ -9,10 +9,33 @@
 		<script src="scripts/bootstrap.min.js"></script>
 
 	</head>
-	<body>
-		<input type='label' value='Enter your email here:' /></br>
-		<input type='text' id='email' /></br></br>
-		<input type='button' id='btn_save' value='Send'  />
+	<body style='width:200px;height:200px;background-color:#C6DEFF;'>
+		<form role='form'>
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<label style='font-family:comic sans ms ; font-size:20px;color:#990033;'> 
+			  Freeze.It 
+			</label><br/><br/>
+
+			<label for='name'> 
+			  Name your Session
+			</label>
+			<input type='text' id='name' class='form-control' /></br>
+
+			<label for='user' >Your name:</label>
+			<input type='text' id='user' class='form-control' /></br>
+
+			<label for='email_from' >
+				Your email:
+			</label>	
+			<input type='text' id='email_from' class='form-control' /></br>
+
+			<label for='email' >
+				 Target email:
+			</label>	
+			<input type='text' id='email' class='form-control' /></br>
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<input type='button' id='btn_save' class='btn btn-large btn-success' value='Send'  />
+		</form>
 		<script type='text/javascript' src ='scripts/Core_Modules.js' >
 		</script>
 	</body>
