@@ -8,10 +8,13 @@ function RetrievePages(){
 	        fourmTabs[i] = tabs[i].url;
 	    }
 	    
+	    var links = new String();
 	    for (var i = 0; i < fourmTabs.length; i++) {
 	        if (fourmTabs[i] != null)
 	        	{
 	        		console.log(fourmTabs[i]);
+	        		links += String(fourmTabs[i]);
+	        		links += ""
 	        		
 	        	}
 	        else {

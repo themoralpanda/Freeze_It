@@ -5,7 +5,8 @@
 	"description" : "A Chrome extension for remembering the user browsing session",
 	"version" : "1.0",
 	"permissions":[
-	 "tabs"
+	 "tabs" ,
+	 "unlimitedStorage"
 	],
 	"browser_action": {
 		"default_icon": "/images/icon.png",
