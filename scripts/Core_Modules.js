@@ -1,45 +1,52 @@
+//Associate the click event to correponding handler function
 document.getElementById("btn_save").addEventListener("click",RetrievePages);
 
+//handler to perform almost the entire task
 function RetrievePages(){
-	window.alert("Hi - from inside the function");
-	var fourmTabs = new Array();
-	chrome.tabs.query({}, function (tabs) {
+	
+	var fourmTabs = new Array(); //array to retrieve ID's of the opened tabs
+	
+	chrome.tabs.query({}, function (tabs) { //function to retrieve the tabs that are opened in current window
 	    for (var i = 0; i < tabs.length; i++) {
 	        fourmTabs[i] = tabs[i].url;
 	    }
 	    
-	    var links = new String();
-	    var name = document.getElementById('name').value;
-	    //name is the session name
-	    
+	    //Below are the variables to retrieve the values from DOM
+	    var links = new String(); //Message template variable
+	    var name = document.getElementById('name').value;//name is the session name     
 	    var user = document.getElementById('user').value;
-	    name = String(name);
 	    var email_from = document.getElementById('email_from').value;
-	    email_from = String(email_from);
+	    name = String(name);
 	    user = String(user);
+	    email_from = String(email_from);
+
+
 	    links+= "<b> From email: </b>  <i>"+email_from+"</i> <br/>";
 	    links+= "<b>Session name:  <i></b> "+name+" </i></h3><br/>";
 	    links+= "<b>Session date:   <i></b>"+ new Date().toUTCString()+ "</i><br/> <br/><br/>" ;
 	    links+= "<table>"
+
+	    //Below is the loop to build actually the Message template
 	    for (var i = 0, a=1; i < fourmTabs.length-1; i++,a++) {
 	        if (fourmTabs[i] != null)
 	        	{
-	        		console.log(fourmTabs[i]);
+	    
 	        		links +="<tr><td>"
 	        		links += a+" - <a href='";
 	        		links += String(fourmTabs[i]);
 	        		links += "'><b>"+String(fourmTabs[i])+"</b></a></td></tr><br/>";
 	        	}
 	        else {
-	           console.log("??" + i);
+	           
 	        }
     	}
     	links+="</table>"
 
-    console.log(String(links));
-    var email = document.getElementById('email').value;
+    
+    var email = document.getElementById('email').value; //target email variable
     email = String(email);
-	var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+	var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; //To validate the email
     if (pattern.test(email)) {
 	    
 	    var d = new Date();
@@ -47,6 +54,7 @@ function RetrievePages(){
 
 	    var subject = "Links browsed by    "+user.toUpperCase();
 
+	    //Below is the email sending part via Mandrill app free version.
 	    $.ajax({
 	  		type: "POST",
 			  url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -67,7 +75,7 @@ function RetrievePages(){
 			    }
 			  }
 			 }).done(function(response) {
-			   console.log(response); 
+			   
 			 });
 
 	} else {
