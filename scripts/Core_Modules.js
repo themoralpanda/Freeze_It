@@ -75,7 +75,7 @@ function RetrievePages(){
 			    }
 			  }
 			 }).done(function(response) {
-			   
+			   alert('Session details mailed successfully');
 			 });
 
 	} else {
