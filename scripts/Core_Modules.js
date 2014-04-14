@@ -11,10 +11,13 @@ function RetrievePages(){
 	    var links = new String();
 	    var name = document.getElementById('name').value;
 	    //name is the session name
+	    
 	    var user = document.getElementById('user').value;
 	    name = String(name);
+	    var email_from = document.getElementById('email_from').value;
+	    email_from = String(email_from);
 	    user = String(user);
-	    links+= "<b> From: </b>  <i>"+user+"</i> <br/>";
+	    links+= "<b> From email: </b>  <i>"+email_from+"</i> <br/>";
 	    links+= "<b>Session name:  <i></b> "+name+" </i></h3><br/>";
 	    links+= "<b>Session date:   <i></b>"+ new Date().toUTCString()+ "</i><br/> <br/><br/>" ;
 	    links+= "<table>"
@@ -34,9 +37,6 @@ function RetrievePages(){
     	links+="</table>"
 
     console.log(String(links));
-    var email_from = document.getElementById('email_from').value;
-    email_from = String(email_from);
-   
     var email = document.getElementById('email').value;
     email = String(email);
 	var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -45,7 +45,7 @@ function RetrievePages(){
 	    var d = new Date();
 	    d = String(d);
 
-	    var subject = "Links browsed by "+user+" on :" + d;
+	    var subject = "Links browsed by    "+user.toUpperCase();
 
 	    $.ajax({
 	  		type: "POST",
@@ -53,7 +53,7 @@ function RetrievePages(){
 			  data: {
 			    'key': '_G97b4x1hGzqM7C7NsmuvQ',
 			    'message': {
-			      'from_email': email_from,
+			      'from_email': 'freezeit.session@gmail.com',
 			      'to': [
 			          {
 			            'email': email,
